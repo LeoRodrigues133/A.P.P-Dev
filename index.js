@@ -8,10 +8,12 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.json());
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const USER_ID = process.env.USER_ID;
 const PORT = process.env.PORT || 3000;
+
 
 const EMAILJS_SERVICE_ID = process.env.EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID;
