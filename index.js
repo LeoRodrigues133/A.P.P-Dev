@@ -83,11 +83,11 @@ app.get('/project/:repo', async (req, res) => {
 });
 
 app.post('/send-email', async (req, res) => {
-    const { name, email, message, phone } = req.body;
+    const { name, email, phone, whatsapp, subject, message } = req.body;
     
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !subject) {
         return res.status(400).json({ 
-            error: 'Campos obrigatórios: name, email, message' 
+            error: 'Campos obrigatórios: nome, email, título e menssagem' 
         });
     }
 
@@ -105,8 +105,10 @@ app.post('/send-email', async (req, res) => {
             template_params: {
                 from_name: name,
                 from_email: email,
+                phone: phone || 'Não informado',
+                whatsapp: whatsapp,
+                subject:subject,
                 message: message,
-                phone: phone || 'Não informado'
             }
         };
 
